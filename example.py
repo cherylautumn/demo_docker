@@ -8,9 +8,11 @@ class Producer(threading.Thread):
     daemon = True
 
     def run(self):
-        producer = KafkaProducer(bootstrap_servers='192.168.99.100:9092', request_timeout_ms=120000)
+        print("connect to 54.172.25.150")
+        producer = KafkaProducer(bootstrap_servers='54.172.25.150:9092', request_timeout_ms=120000)
 
         while True:
+            print("send data to broker")
             producer.send('my-topic', b"test")
             producer.send('my-topic', b"\xc2Hola, mundo!")
             time.sleep(1)
@@ -20,7 +22,7 @@ class Consumer(threading.Thread):
     daemon = True
 
     def run(self):
-        consumer = KafkaConsumer(bootstrap_servers='192.168.99.100:9092',
+        consumer = KafkaConsumer(bootstrap_servers='54.172.25.150:9092',
                                  auto_offset_reset='earliest',
                                  request_timeout_ms=120000)
         consumer.subscribe(['my-topic'])
