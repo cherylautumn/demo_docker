@@ -5,6 +5,7 @@ create a dockerfile
 $ docker build -t cherylq/base:v0 .
 
 $ docker push cherylq/base
+
 $ docker run -d -P --name test_sshd cherylq/base:v0
 
 cheryltekiMacBook-Pro-2:docker-base cheryl$ docker port test_sshd 22
