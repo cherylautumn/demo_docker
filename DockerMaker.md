@@ -5,16 +5,22 @@ create a dockerfile
 $ docker build -t cherylq/base:v0 .
 
 $ docker push cherylq/base
+
 $ docker run -d -P --name test_sshd cherylq/base:v0
+
 cheryltekiMacBook-Pro-2:docker-base cheryl$ docker port test_sshd 22
 0.0.0.0:32768
+
 cheryltekiMacBook-Pro-2:docker-base cheryl$ docker-machine ip default
 192.168.99.100
+
 cheryltekiMacBook-Pro-2:docker-base cheryl$ ssh root@192.168.99.100 -p 32768
 
 Clean up
 $ docker stop test_sshd
+
 $ docker rm test_sshd
+
 $ docker rmi eg_sshd
 
 docker exec -it lileedocker_zookeeper_1 sh
